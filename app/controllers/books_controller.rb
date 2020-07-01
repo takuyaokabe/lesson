@@ -21,8 +21,8 @@ class BooksController < ApplicationController
   	    else
   	    	@books = Book.all
   	    	render action: :index
+        end
     end
-end
 
   def show
   	    @books = Book.find(params[:id])
@@ -31,7 +31,7 @@ end
 #どのように記載すれば1ケのidを元に記載されるかわからない。とにかく何かを入れないとからのまま。.find(params[:id])入れる？
  
   def edit
-  	  @books = Book.find(params[:id])
+  	  @book = Book.find(params[:id])
   end
   #とりあえず前に先生に作ってもらったのには書いてあったからupdateアクション作った。不要なら消す
   def update
@@ -39,7 +39,11 @@ end
       if book.update(book_params)
       	flash[:notice] = "Book was successfully created"
       redirect_to book_path(book)
-  end
+      #ここからendまでしか触るな
+     else
+  	    	@book = book
+  	    	render action: :edit
+      end
   end
   def destroy
   	book =Book.find(params[:id])

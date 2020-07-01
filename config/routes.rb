@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   #get 'books/new'
   #get 'books/edit'
   resources :books
-  get "/" => "books#top"
-
+  root to: 'books#top'
+  #get "/" => "books#top"
 
 end
