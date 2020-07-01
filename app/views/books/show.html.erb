@@ -1,0 +1,9 @@
+<%= flash[:notice] %>
+<h4>title:</h4>
+<%= @books.title %>
+<h4>body:</h4>
+<%= @books.body %>
+
+<%= link_to("Edit",edit_book_path) %>
+<%= link_to("Back", books_path)%>
+
